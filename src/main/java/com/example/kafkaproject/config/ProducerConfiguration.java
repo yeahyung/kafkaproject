@@ -1,5 +1,6 @@
 package com.example.kafkaproject.config;
 
+import com.example.kafkaproject.vo.Stock;
 import com.example.kafkaproject.vo.User;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -71,5 +72,30 @@ public class ProducerConfiguration {
     public KafkaTemplate<String, User> kafkaUserTemplate() {
         // Bean을 통하여 의존성 주입
         return new KafkaTemplate<String, User>(producerCustomFactory());
+    }
+
+
+    public Map<String, Object> producerStockConfigs() {
+        Map<String, Object> props = new HashMap<>();
+
+        // server host 및 port 지정
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "manager:9092");
+
+        // key serialize 지정
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        // JsonSerializer
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+
+        return props;
+    }
+
+    public ProducerFactory<String, Stock> producerStockFactory() {
+        return new DefaultKafkaProducerFactory<>(producerStockConfigs());
+    }
+
+    @Bean
+    public KafkaTemplate<String, Stock> kafkaStockTemplate() {
+        // Bean을 통하여 의존성 주입
+        return new KafkaTemplate<String, Stock>(producerStockFactory());
     }
 }
