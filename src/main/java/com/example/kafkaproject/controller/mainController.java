@@ -34,7 +34,7 @@ public class mainController {
     @RequestMapping(value="/crawling", method = RequestMethod.GET)
     @ResponseBody
     public String crawling() throws IOException{
-        crawlingService.crawlingNaver();
+        crawlingService.crawlingTest();
         return "OK";
     }
 
