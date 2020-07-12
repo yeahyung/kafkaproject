@@ -45,7 +45,7 @@ public class Crawling {
 
             if(product.containsKey(arrays[1])){
                 System.out.println(product.get(arrays[1]));
-                kafkaStockTemplate.send("testtest", stock);
+                kafkaStockTemplate.send("testtesttt", stock);
             }
         }
     }
