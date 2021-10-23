@@ -13,6 +13,7 @@ public class Stock {
     Date currentTime;
     String ratio;
     String name;
+    String nameInEng;
     String searchRatio;
     String currentValue;
     String compareToYesterday;
