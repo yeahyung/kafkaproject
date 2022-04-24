@@ -1,6 +1,6 @@
 package com.example.kafkaproject.controller;
 
-import com.example.kafkaproject.service.Crawling;
+import com.example.kafkaproject.service.impl.CrawlingServiceImpl;
 import com.example.kafkaproject.service.KafkaConsume;
 import com.example.kafkaproject.service.KafkaProduce;
 import org.slf4j.Logger;
@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.io.IOException;
 
 @Controller
 public class mainController {
@@ -25,17 +23,10 @@ public class mainController {
     KafkaProduce kafkaProducer;
 
     @Autowired
-    Crawling crawlingService;
+    CrawlingServiceImpl crawlingService;
 
-    public mainController(Crawling crawlingService) {
+    public mainController(CrawlingServiceImpl crawlingService) {
         this.crawlingService = crawlingService;
-    }
-
-    @RequestMapping(value="/crawling", method = RequestMethod.GET)
-    @ResponseBody
-    public String crawling() throws IOException{
-        crawlingService.crawlingTest();
-        return "OK";
     }
 
     @RequestMapping(value="/producer", method = RequestMethod.GET)
