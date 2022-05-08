@@ -1,6 +1,7 @@
 package com.example.kafkaproject.scheduler;
 
 import com.example.kafkaproject.service.impl.CrawlingServiceImpl;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,5 +20,13 @@ public class CrawlingScheduler {
     // 1분마다 실행
     @Scheduled(cron = "0 * * * * *")
     public void crawlingScheduler() throws Exception {
+        try{
+            Elements elements = crawling.getCrawlingNAVERResponse();
+            String stockInfo = crawling.convertElementToString(elements);
+            //System.out.println(stockInfo)
+            crawling.exportCrawlingResponseToElasticsearch(stockInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

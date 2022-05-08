@@ -1,8 +1,8 @@
 package com.example.kafkaproject.controller;
 
 import com.example.kafkaproject.service.impl.CrawlingServiceImpl;
-import com.example.kafkaproject.service.KafkaConsume;
-import com.example.kafkaproject.service.KafkaProduce;
+import com.example.kafkaproject.service.kafka.KafkaConsume;
+import com.example.kafkaproject.service.kafka.KafkaProduce;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

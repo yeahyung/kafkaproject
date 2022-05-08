@@ -1,4 +1,4 @@
-package com.example.kafkaproject.service;
+package com.example.kafkaproject.service.kafka;
 
 import com.example.kafkaproject.vo.User;
 import org.apache.kafka.clients.producer.ProducerRecord;
