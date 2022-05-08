@@ -96,6 +96,7 @@ public class CrawlingServiceImpl implements ICrawlingService {
     public Boolean exportCrawlingResponseToElasticsearch(String stockInfo) {
         try{
             httpUtil.putBulkToElasticsearch("http://myesdomain:9200/_bulk", stockInfo);
+            System.out.println("success to send bulk to es");
             return true;
         } catch (Exception e) {
             e.printStackTrace();

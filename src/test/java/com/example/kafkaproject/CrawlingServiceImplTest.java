@@ -21,7 +21,7 @@ public class CrawlingServiceImplTest {
         try{
             Elements elements = crawling.getCrawlingNAVERResponse();
             String stockInfo = crawling.convertElementToString(elements);
-            //System.out.println(stockInfo)
+            System.out.println(stockInfo);
             assertThat(crawling.exportCrawlingResponseToElasticsearch(stockInfo)).isTrue();
         } catch (Exception e) {
             e.printStackTrace();
